@@ -26,7 +26,9 @@ Open `http://127.0.0.1:4174`. There are no npm dependencies to install.
 
 ## Deploy with Vercel
 
-For this commercial brand, use a Vercel Pro team. Vercel's free Hobby plan permits personal, non-commercial use only: https://vercel.com/docs/limits/fair-use-guidelines
+The current personal design prototype is deployed at https://arvyra-unwritten.vercel.app. Checkout is disabled and the concept garments are not for sale. GitHub automatic deployment still requires the owner's GitHub login connection in Vercel; do not assume a push updates the live site until that connection is confirmed.
+
+Vercel's free Hobby plan permits personal, non-commercial use only. Reassess the plan before using this prototype to advertise products for sale or operate a business; commercial use needs Pro or Enterprise even without accepting payments: https://vercel.com/docs/limits/fair-use-guidelines
 
 1. Sign in to Vercel and choose **Add New > Project**.
 2. Connect GitHub and import `hridya1/arvyra-unwritten`.
@@ -35,7 +37,7 @@ For this commercial brand, use a Vercel Pro team. Vercel's free Hobby plan permi
 
 Once Git integration is connected, commits to the production branch `main` deploy automatically. Edit `dist/catalogue.js` and upload product photos as described in the collection guide; wait for the successful deployment before checking the live website.
 
-Deployment is not yet confirmed merely because this configuration file exists.
+The initial CLI deployment has been confirmed ready, and the public URL passed desktop and simulated mobile checks for collection filters, variants, bag totals, draft restoration and the 3D viewer.
 
 ## Free alternative: Cloudflare Pages
 
