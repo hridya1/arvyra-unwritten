@@ -47,7 +47,7 @@ Change the example to your actual product. The price is a number in rupees; do n
 
 Save with **Commit changes** to `main`.
 
-Once GitHub and Cloudflare are connected, Cloudflare checks and deploys the update automatically. Wait for a successful deployment in Cloudflare, then refresh the public site.
+Once GitHub is connected to your hosting project (Vercel or Cloudflare Pages), your host checks and deploys the update automatically. Wait for a successful deployment in the hosting dashboard, then refresh the public site.
 
 Verify the new collection filter, colour photos, prices, sizes and bag totals. If a check fails, read its error message and fix the missing file or invalid entry.
 

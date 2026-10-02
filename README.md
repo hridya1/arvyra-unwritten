@@ -24,7 +24,20 @@ npm start
 
 Open `http://127.0.0.1:4174`. There are no npm dependencies to install.
 
-## Deploy with Cloudflare Pages
+## Deploy with Vercel
+
+For this commercial brand, use a Vercel Pro team. Vercel's free Hobby plan permits personal, non-commercial use only: https://vercel.com/docs/limits/fair-use-guidelines
+
+1. Sign in to Vercel and choose **Add New > Project**.
+2. Connect GitHub and import `hridya1/arvyra-unwritten`.
+3. Keep the root directory at the repository root and framework preset **Other**. `vercel.json` sets the check command and `dist` output directory.
+4. Deploy and wait for **Ready** before sharing the generated URL.
+
+Once Git integration is connected, commits to the production branch `main` deploy automatically. Edit `dist/catalogue.js` and upload product photos as described in the collection guide; wait for the successful deployment before checking the live website.
+
+Deployment is not yet confirmed merely because this configuration file exists.
+
+## Free alternative: Cloudflare Pages
 
 Use a **Git-connected Pages project** so future GitHub commits deploy automatically. A private GitHub repository is supported; the deployed website can still be public.
 
