@@ -1,75 +1,58 @@
-# ARVYRA storefront
+# ARVYRA — Next.js demo store
 
-Streetwear collection preview with tees, hoodies, cargos, a ghost mannequin 3D T-shirt, colour choices, product details and a draft shopping bag.
+A personal streetwear design experiment built with Next.js App Router, React, TypeScript, Three.js and Zod. Concept garments are not for sale.
 
-**Checkout is disabled.** This project is a brand/storefront preview. No payments or orders are processed.
+## What works
 
-## Where to edit
+- Search, categories, collection filters and price sorting.
+- Seven product pages, each with interactive 3D and photo views, colour selection and sizes.
+- Browser-tab shopping bag with validated restoration, quantity limits and totals.
+- Server-validated demo checkout and a clearly labelled simulation confirmation.
+- Mobile layouts, reduced motion, keyboard view controls and product-image fallback when WebGL fails.
+- Product metadata, sitemap, robots rules, 404 handling and browser security headers.
 
-- `dist/catalogue.js`: products, collections, prices, sizes, colours and the featured 3D garment.
-- `dist/assets/`: product photos, 3D model and artwork.
-- `dist/index.html`: page wording and structure.
-- `dist/styles.css` and `dist/store.css`: design.
+## Run locally
 
-Start with [Adding a collection](docs/ADDING-COLLECTIONS.md).
-
-## Preview locally
-
-Install Node.js 22 or newer, then open a terminal in this folder:
+Use Node.js 22 and run:
 
 ```sh
-npm run check
+npm ci
+npm run dev
+```
+
+Open http://localhost:3000. For the production build:
+
+```sh
+npm run build
 npm start
 ```
 
-Open `http://127.0.0.1:4174`. There are no npm dependencies to install.
+`npm run check` verifies the catalogue, TypeScript and meaningful cart validation tests. GitHub Actions runs the full production build.
 
-## Deploy with Vercel
+## Edit the store
 
-The current personal design prototype is deployed at https://arvyra-unwritten.vercel.app. Checkout is disabled and the concept garments are not for sale. GitHub automatic deployment still requires the owner's GitHub login connection in Vercel; do not assume a push updates the live site until that connection is confirmed.
+- `src/lib/catalogue.ts`: products, collections, colours, sample prices and hero product.
+- `public/assets`: photos, tee model, print and asset credits.
+- `src/lib/garment-engine.ts`: 3D scene, garment geometry and graphics.
+- `src/components`: React storefront, product controls, bag and demo checkout.
+- `src/app`: pages, metadata and the demo checkout API.
 
-Vercel's free Hobby plan permits personal, non-commercial use only. Reassess the plan before using this prototype to advertise products for sale or operate a business; commercial use needs Pro or Enterprise even without accepting payments: https://vercel.com/docs/limits/fair-use-guidelines
+See [Adding collections](docs/ADDING-COLLECTIONS.md).
 
-1. Sign in to Vercel and choose **Add New > Project**.
-2. Connect GitHub and import `hridya1/arvyra-unwritten`.
-3. Keep the root directory at the repository root and framework preset **Other**. `vercel.json` sets the check command and `dist` output directory.
-4. Deploy and wait for **Ready** before sharing the generated URL.
+## Deployment
 
-Once Git integration is connected, commits to the production branch `main` deploy automatically. Edit `dist/catalogue.js` and upload product photos as described in the collection guide; wait for the successful deployment before checking the live website.
+The Vercel project is `arvyra-unwritten`; its production domain is https://arvyra-unwritten.vercel.app. `vercel.json` selects Next.js and the production build. Keep the repository root as the project root; remove any old `dist` output override from the hosting settings.
 
-The initial CLI deployment has been confirmed ready, and the public URL passed desktop and simulated mobile checks for collection filters, variants, bag totals, draft restoration and the 3D viewer.
+Git-based automatic deployments require the owner's GitHub connection in Vercel and a linked repository. A successful command-line deployment does not by itself enable automatic updates. Check that connection before assuming a push updates the public site.
 
-## Free alternative: Cloudflare Pages
+This remains a personal non-commercial prototype on Hobby. Vercel defines commercial use to include advertising products for sale, even before processing payments: https://vercel.com/docs/limits/fair-use-guidelines
 
-Use a **Git-connected Pages project** so future GitHub commits deploy automatically. A private GitHub repository is supported; the deployed website can still be public.
+## Before a real retail launch
 
-1. Push this folder to a GitHub repository on branch `main`.
-2. In Cloudflare: **Workers & Pages > Create application > Pages > Connect to Git**.
-3. Authorize Cloudflare to access this repository, then select it.
-4. Use these settings:
+This demo is deployable, but it is not a production commerce backend. It has no real stock, payment processing, shipping/tax calculations, customer accounts, emails or durable order records. The demo receipt is only saved in the browser tab.
 
-| Setting | Value |
-| --- | --- |
-| Framework preset | None |
-| Production branch | `main` |
-| Root directory | Repository root (leave blank) |
-| Build command | `npm run check` |
-| Build output directory | `dist` |
+Connect a real commerce system such as Shopify, use its verified variants/prices/stock and hosted checkout, test payment failures and stock changes, and establish shipping, returns, privacy and support details before accepting orders. Choose hosting suitable for commercial use.
 
-5. Select **Save and Deploy**. Cloudflare will provide your public URL when deployment succeeds.
+All 3D models are illustrative. The tee uses an authored ghost-mannequin mesh; hoodie and cargo shapes are procedural design concepts, not scanned garments. Some prints use placement studies rather than exact production artwork. Product photographs remain the design reference. A manufacture-matched fit needs authored garment models and actual measurements.
 
-Every push to `main` triggers a new check and deployment. Other branches can get preview links. The GitHub Actions workflow also checks product data, images and JavaScript syntax.
-
-Official setup: https://developers.cloudflare.com/pages/get-started/git-integration/
-
-Free-plan limits: https://developers.cloudflare.com/pages/platform/limits/
-
-GitHub Pages is not the hosting target for this commercial storefront.
-
-## Important details
-
-- Do not upload passwords, tokens, `.env` files or your previous Sites repository credentials.
-- The `.openai` hosting metadata and original Git history are intentionally excluded from this standalone export.
-- `commerce.js` contains a disabled Shopify Storefront adapter. It needs a real store, verified variant IDs and complete checkout testing before it can accept purchases. Never put an Admin API secret in browser code.
-- Product artwork and garments are concepts. Confirm prices, materials, measurements and delivery terms before selling.
-- Third-party model and library credits/licenses are retained in `dist/assets` and `dist/vendor`. This export does not grant an open-source license to the ARVYRA brand or its artwork.
+Third-party model credits and licenses are retained in `public/assets`. ARVYRA branding and artwork are not granted an open-source license by this repository.
